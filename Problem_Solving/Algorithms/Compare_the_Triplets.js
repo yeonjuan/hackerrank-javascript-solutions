@@ -3,13 +3,14 @@
  * @link https://www.hackerrank.com/challenges/compare-the-triplets/problem
  */
 
-function compareTriplets (ratingsA, ratingsB) {
-    const score = [0, 0];
+function compareTriplets (alicePoints, bobPoints) {
+    let aliceScore = 0;
+    let bobScore = 0;
 
-    ratingsA.forEach((rateA, index) => {
-        const rateB = ratingsB[index];
-        score[1] += Number(rateA < rateB);
-    });
+    for (let i = 0; i < 3; i ++) {
+        aliceScore += Number(bobPoints[i] < alicePoints[i]);
+        bobScore += Number(alicePoints[i] < bobPoints[i]);
+    }
 
-    return score;
+    return [aliceScore, bobScore];
 }
